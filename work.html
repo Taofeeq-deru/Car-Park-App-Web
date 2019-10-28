@@ -18,7 +18,6 @@
             background-color: #0049B5;
             padding: 0;
         }
-
         /* Sidebar sizes when expanded and expanded */
         .sidebar-expanded {
             width: 230px;
@@ -26,13 +25,11 @@
         .sidebar-collapsed {
             width: 60px;
         }
-
         /* Menu item*/
         #sidebar-container .list-group a {
             height: 50px;
             color: white;
         }
-
         /* Submenu item*/
         #sidebar-container .list-group .sidebar-submenu a {
             height: 45px;
@@ -41,7 +38,6 @@
         .sidebar-submenu {
             font-size: 0.9rem;
         }
-
         /* Separators */
         .sidebar-separator-title {
             background-color: #0049B5;
@@ -55,7 +51,6 @@
             background-color: #0049B5;    
             height: 60px;
         }
-
         /* Closed submenu icon */
         #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
         content: " \f0d7";
@@ -72,6 +67,67 @@
         text-align: right;
         padding-left: 10px;
         }
+        /* form body style*/
+       .form-body {
+        width: 90%;
+        height: auto;
+        background: #FFFFFF;
+        border: 1px solid rgba(63, 63, 68, 0.005);
+        box-shadow: 0px 1px 3px rgba(63, 63, 68, 0.15), 0px 1px 0px rgba(63, 63, 68, 0.05);
+        border-radius: 4px;
+        margin:auto;
+        padding: 2.5rem;
+
+       }
+       .head-text {
+        margin-bottom: 2rem;
+       }
+       .form-body input, form select {
+        border: 1px solid #BDBDBD;
+        border-radius: 5px;
+        width: 18rem;
+        margin-top: .7rem;
+        padding-left: 1rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+       }
+       .form-body button {
+        border: 2px solid #488AC5;
+box-sizing: border-box;
+border-radius: 6px;
+color: #488AC5;
+background-color: #FFFFFF;
+padding: .3rem 2.9rem .3rem 2.9rem;
+display: block;
+margin-top: 3rem;
+       }
+.first-box {
+        display: flex;
+        max-width: 90%;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+       }
+.second-box {
+    display: flex;
+        max-width: 90%;
+        justify-content: space-between;
+     
+}
+@media screen and (max-width: 600px) {
+
+.first-box {
+          flex-direction: column;
+        max-width: 100%;
+        align-items: space-between;
+      
+       
+       }
+.second-box {
+   flex-direction: column;
+        max-width: 100%;
+        justify-content: space-between;
+     
+}
     </style>
 </head>
 <body>
@@ -162,8 +218,8 @@
                 </nav>
                 <div class="col main p-3 text-white" style="background:#1A73E8;">
                     <div class="col">
-                        <h1 style="font-size: 35px">Welcome back Admin</h1>
-                        <h6 class="pt-2">CAR PARK APPLICATION </h6>
+                        <h1 style="font-size: 35px">Work with Us</h1>
+                        <h6 class="pt-2">JOB VACANCY APPLICATION </h6>
                     </div>
                 </div>
                 <div class="col shadow">
@@ -174,7 +230,46 @@
                         </nav>
                 </div>
                 <div class="col mt-2 p-3">
-                        <h1>ADD CONTENTS HERE!!!</h1>
+                         <div class="form-body">
+        <div  class="head-text">
+            <h6>
+                Job Application Form 
+            </h6>
+        </div>
+        <form action="/">
+            <div class="first-box">
+            <label for="First">
+                First Name
+                <br>
+                <input type="name" name="name" placeholder="First Name" required id="First">
+            </label>
+            <label for="Last">
+                Last Name
+                <br>
+                <input type="name" name="name" placeholder="Last Name" required id="Last">
+            </label>
+        </div>
+        <div class="second-box">
+            <label for="Email">
+                Email Address
+                <br>
+                <input type="Email" name="Email" id="Email" placeholder="Email" required>
+            </label>
+            <label>Job Vacany Options
+                <br>
+            <select>
+                <option value="Select Job">Select Job</option>
+  <option value="Cleaner">Cleaners</option>
+  <option value="Traffic">Traffic controller</option>
+  <option value="Officer">Vehicle inspection officer</option>
+            </select>
+        </label>
+        </div>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+    </div>
             </div>                      
         </div>
     </div>
@@ -187,11 +282,9 @@
     $(document).ready(function(){
 // Hide submenus
 $('#body-row .collapse').collapse('hide'); 
-
 // Collapse/Expand icon
 $('#collapse-icon').addClass('fa-angle-double-left');
 $('#collapse-menu').addClass('fa-angle-double-right'); 
-
 // Collapse click
 $('[data-toggle=sidebar-colapse]').click(function() {
     SidebarCollapse();
@@ -216,7 +309,6 @@ function SidemenuCollapse () {
     // Collapse/Expand icon
     $('#collapse-menu').toggleClass('fa-angle-double-right fa-angle-double-left');
 }
-
 //Hide Menu on Load
 $(document).ready(function(){
     $('#sidebar-container').toggleClass('d-none');

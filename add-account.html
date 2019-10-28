@@ -110,13 +110,7 @@
                         </span>
                     </a>
 
-                    <!--                         <a href="#" class="d-flex w-100 justify-content-start align-items-center list-group-item list-group-item-action border-0 flex-column align-items-start" style="background-color: #0049B5">
-                            <span class="mr-auto">
-                                    <img class="mr-auto" src="https://res.cloudinary.com/benjee/image/upload/v1571813952/Group_46_tnscz9.svg" alt="Apps" width="30" height="30">
-                                    <span class="menu-collapsed">Apps</span>
-                                    <span class="submenu-icon ml-auto"></span>
-                            </span>  
-                        </a> -->
+
                     <a href="mailSupport.html"
                         class="d-flex w-100 justify-content-start align-items-center list-group-item list-group-item-action border-0 flex-column align-items-start"
                         style="background-color: #0049B5">
@@ -149,13 +143,7 @@
                             <span class="submenu-icon ml-auto"></span>
                         </span>
                     </a>
-                    <!--                         <a href="#" class="d-flex w-100 justify-content-start align-items-center list-group-item list-group-item-action border-0 flex-column align-items-start" style="background-color: #0049B5">
-                                <span class="mr-auto">
-                                        <img class="mr-auto" src="https://res.cloudinary.com/benjee/image/upload/v1571904849/Group_47_gq0grj.svg" alt="Settings" width="25" height="25">
-                                        <span class="menu-collapsed">Cancelation Policy</span>
-                                        <span class="submenu-icon ml-auto"></span>
-                                </span>  
-                            </a> -->
+
                 </ul>
             </div>
             <!--For main content area -->
@@ -196,61 +184,66 @@
                         <h6 class="pt-2">CAR PARK APPLICATION </h6>
                     </div>
                 </div>
-
                 <div class="col shadow">
                     <nav class="nav">
-                        <a class="nav-link text-muted" href="add-account.html">Account</a>
-                        <a class="nav-link text-muted nav-link active text-muted border-bottom border-primary"
-                            href="car-park-users.html">Users</a>
+                        <a class="nav-link active text-muted border-bottom border-primary"
+                            href="add-account.html">Account</a>
+                        <a class="nav-link text-muted" href="car-park-users.html">Users</a>
                         <a class="nav-link text-muted" href="pay-history.html">Payment History</a>
                     </nav>
-                </div><!-- end of .col shadow-->
-
+                </div>
                 <div class="col mt-2 p-3">
-                    <div class="h-100 table-responsive ">
-                        <table class="table mt-4 ml-1 shadow"
-                            style="border-collapse: separate;border-spacing: 0 1em; border: 1px solid rgba(63, 63, 68, 0.005);box-shadow: 0px 1px 3px rgba(63, 63, 68, 0.15), 0px 1px 0px rgba(63, 63, 68, 0.05); max-width:800px;">
-                            <th colspan="4" style="border-top:none; border-radius: 4px;">
-                                <span style="font-size:16px; color: #3A3B3F; letter-spacing: -0.05px;">Users</span>
-                                <span class="text-muted font-weight-normal small ml-5"
-                                    style="font-size:14px; color: #66788A;">Your users are made available here</span>
-                                <a href="add-account.html" class="btn btn-primary float-right pl-5 pr-5"
-                                    style="font-size:13px;">Add New Member</a>
-                            </th>
+                    <div class="container">
+                        <div class="card" style="width: 100%;">
+                            <div class="card-body">
 
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Name</th>
-                                    <th>Email Address</th>
-                                    <th>Role</th>
-                                    <th>Last Login</th>
-                                </tr>
+                                <form action="add-user.php" method="POST">
+                                    <fieldset>
+                                        <div style="padding-left: 1.25rem; padding-right: 1.25rem">Personal inforation
+                                            <span class="card-text" style="color: darkgray; padding-left: 50px">The
+                                                information can be edited from your profile page.</span>
+                                            <input type="submit" class="btn btn-primary"
+                                                style="float: right; width: 120px;" value="Save"></div>
+                                        <br>
+                                        <hr><br>
+                                        <div style="padding-left: 1.25rem; padding-right: 1.25rem">
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    First Name
+                                                    <input type="text" class="form-control" placeholder="First name" name="firstName">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    Last Name
+                                                    <input type="text" class="form-control" placeholder="Last name" name="lastName">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    Email
+                                                    <input type="email" class="form-control" placeholder="Email" name="email">
+                                                </div>
+                                                <div class="col-sm-6"></div>
+                                            </div>
+                                            <div style="color: darkgray">we will use this email if we need to contact
+                                                you about your account</div><br><br><br>
+                                            <div class="form-group row">
+                                                <div class="col-sm-10">
+                                                    <button type="submit" class="btn"
+                                                        style="border-color: #488ac5; color: #488ac5">Change
+                                                        Password</button>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <?php
-									$conn = mysqli_connect("localhost", "root", "", "carpack");
-									// Check connection
-									if ($conn->connect_error) {
-										die("Connection failed: " . $conn->connect_error);
-									}
-									$sql = "SELECT name, email, role, login FROM carpack";
-									$result = $conn->query($sql);
-									if ($result->num_rows > 0) {
-									// output data of each row
-										while($row = $result->fetch_assoc()) {
-											echo "<tr><td>" . $row["Name"]. "</td><td>" . $row["email"] . "</td><td>"
-											. $row["role"]. "</td><td>" . $row["login"]. "</td></tr>";
-											}
-										echo "</table>";
-									else { echo "0 results"; }
-										$conn->close();
-								?>
+                                    </fieldset>
+                                </form>
 
-                            </tbody>
-                        </table>
-                    </div><!-- end of .table-responsive-->
-                </div> <!-- end of .col mt-2 p-3-->
+                            </div>
+                        </div>
 
-            </div><!-- end of col p-0 w-25-->
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js">
@@ -261,9 +254,11 @@
             $(document).ready(function () {
                 // Hide submenus
                 $('#body-row .collapse').collapse('hide');
+
                 // Collapse/Expand icon
                 $('#collapse-icon').addClass('fa-angle-double-left');
                 $('#collapse-menu').addClass('fa-angle-double-right');
+
                 // Collapse click
                 $('[data-toggle=sidebar-colapse]').click(function () {
                     SidebarCollapse();
@@ -288,6 +283,7 @@
                 // Collapse/Expand icon
                 $('#collapse-menu').toggleClass('fa-angle-double-right fa-angle-double-left');
             }
+
             //Hide Menu on Load
             $(document).ready(function () {
                 $('#sidebar-container').toggleClass('d-none');
